@@ -1,0 +1,1 @@
+En cada carpeta contiene los archivos y las instrucciones lo mas explicitas posibles para la configuracion del entorno para cada sistema operativo

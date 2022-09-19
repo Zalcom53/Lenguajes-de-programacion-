@@ -4,10 +4,19 @@
 ;;;Descripcion: Este archivo contiene el codigo para un interprete de un lenguaje corto
 ;;;Fecha: Septiembre del 2022
 
-#Parse
-;;;Construyendo el parse
+;----------------------------------------
+#Interp-Interprete
+;;;Construyendo el interprete
+(define (interp( )))
 
+;----------------------------------------
+
+;----------------------------------------
 #Desugar-Desazucarar
+;;;Construyendo desugar
+(define (desugar()))
+;----------------------------------------
+
 
 (define (eval[str : S-Exp]) : Value
 (interp (desugar(parse str))))

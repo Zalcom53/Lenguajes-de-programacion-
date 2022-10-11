@@ -15,8 +15,63 @@
 #Desugar-Desazucarar
 ;;;Construyendo desugar
 (define (desugar()))
-;----------------------------------------
+;---------------------------------------------------------------------------------------------------
 
+;; Definiendo valor y todas sus posibles variantes 
+(define-type Value
+	(v-num [value : Number])
+	(v-str [value : String])
+	(v-bool [value : Boolean])
+	(v-fun [param : Symbol]
+		   [body : Expr]
+		   [env : Env]))
+
+(define-type Expr
+	(e-num [value : Number])
+	(e-str [value : String])
+	(e-bool [value : Boolean])
+	(e-op [op : Operator]
+		[left : Expr]
+		[right : Expr])
+	(e-if [cond : Expr] ;; 
+		[consq : Expr]
+		[altern : Expr])
+	(e-lam [param : Symbol]
+		[body : Expr])
+	(e-app [func : Expr]
+		[arg : Expr])
+	(e-id [name : Symbol])
+	(sugar-and [left : Expr]
+		[right : Expr])
+	(sugar-or [left : Expr]
+		[right : Expr])
+	(sugar-let [id : Symbol]
+		[value : Expr]
+		[body : Expr]))
+
+
+;; 1.1 Errores
+;; Seccion 1.1 Errores 
+(deinfe-type Errors
+	(define-type InterpError
+	(err-if-got-non-boolean [val : Value]) ;;Un if tiene con condicional no boleano
+	(err-bad-arg-to-op [op : Operator] ;; Operador binario de tipo incorrecto 
+		[val : Value]) 
+	(err-unbound-id [name : Symbol]) ;; Un identificador no esta enlazado a un valor 
+	(err-not-a-function [val : Value])) ;;Se aplica un valor que no es funcion
+
+;; Definiendo las operaciones 
+;; 1.4 Operacioes binarias 
+(define-type Operator
+	(op-plus) ;; suma
+	(op-num-eq) ;; Comparacion numerica
+	(op-append) ;; Concatenacion de cadenas
+	(op-str-eq)) ;; Comparacion de cadenas 
+
+
+;---------------------------------------------------------------------------------------------------
+
+;;este codigo fue dado por el profesor - no modificar!
 
 (define (eval[str : S-Exp]) : Value
 (interp (desugar(parse str))))

@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{subcaption}
+
+
+
+
+\title{Ejercicios PROC}
+\author{Daniel Antonio Quihuis Herandez }
+\date{12 de octubre del 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Ejercicio 3.20[*]}
+\textbf{In PROC, procedures have only one argument, but one can get the
+effect of multiple argument procedures by using procedures that return other procedures. For example, one might write code like}
+
+
+\begin{lstlisting}
+let f = proc (x)
+
+\hspace{1.5cm}  proc (y)...
+
+   \hspace{2cm} in ((f 3) 4)
+\end{lstlisting}
+
+\textbf{This trick is called Currying, and the procedure is said to be Curried. Write a Curried
+procedure that takes two arguments and returns their sum. You can write x + y in our language by writing −(x, −(0, y)).}
+
+\begin{lstlisting}
+    let function-name = 
+    
+     \hspace{0.5cm} proc (x) 
+     
+     \hspace{1cm} proc(y) 
+     
+     \hspace{1.5cm} -(x, -(0, y))
+    
+\end{lstlisting}
+\section{Ejercicio 3.27[*]}
+\textbf{Add a new kind of procedure called a traceproc to the language.
+A traceproc works exactly like a proc, except that it prints a trace message on
+entry and on exit.}
+
+\textit{;; Sintaxis concreta } 
+
+\hspace{1cm} Expression ::= trace-procedure(ID) Expression 
+
+\textit{;; Sintaxis abstracta } 
+
+\hspace{1cm} (trace-proc-exp var body) 
+
+\textit{;; Semantica } 
+
+\hspace{1cm} (value-of (trace-proc-exp var body) $\rho$)) = (trace-proc-val (procedure var body $\rho$))
+
+
+\end{document}

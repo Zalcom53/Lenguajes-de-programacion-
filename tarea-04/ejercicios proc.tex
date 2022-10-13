@@ -39,4 +39,22 @@ procedure that takes two arguments and returns their sum. You can write x + y in
      \hspace{1.5cm} -(x, -(0, y))
     
 \end{lstlisting}
+\section{Ejercicio 3.27[*]}
+\textbf{Add a new kind of procedure called a traceproc to the language.
+A traceproc works exactly like a proc, except that it prints a trace message on
+entry and on exit.}
+
+\textit{;; Sintaxis concreta } 
+
+\hspace{1cm} Expression ::= trace-procedure(ID) Expression 
+
+\textit{;; Sintaxis abstracta } 
+
+\hspace{1cm} (trace-proc-exp var body) 
+
+\textit{;; Semantica } 
+
+\hspace{1cm} (value-of (trace-proc-exp var body) $\rho$)) = (trace-proc-val (procedure var body $\rho$))
+
+
 \end{document}

@@ -5,11 +5,6 @@
   Descripcion: este archivo contiene el codigo fuente del interprete para LETREC
 */
 
-#include <iostream>
-#include <cstdlib>
-
-using namespace std;
-
 
 /** \fn void menu
  * \brief Esta funcion se encaraga de listar las funciones disponibles

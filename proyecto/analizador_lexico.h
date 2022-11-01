@@ -9,3 +9,10 @@
 #include <cstdlib>
 
 using namespace std;
+
+void analizador_lexico(){
+
+cout << "Analizador lexico\n" << endl;
+
+
+} // Llave de cierre en la funcion analizador_lexico

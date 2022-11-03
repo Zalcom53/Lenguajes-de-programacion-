@@ -64,9 +64,14 @@ cout << "Cargar archivo" << endl;
 
 int userMode = CapturaEntero("Seleccione un modo de ejecucion");
 
-if(userMode = 1){
+if(userMode == 1){
+// Ingresar entrada manuamente
+cout << "Entrada manual\n" << endl;
+} else{
+//cargar archivo
+cout << "Cargar entrada desde un archivo\n" << endl;
 
-}
+}// Llave de cierre en else
 
 
 }// LLave de cierre en al funcion start
@@ -143,8 +148,6 @@ int CapturaEntero(const char solicitud[]){
             cin.ignore(numeric_limits<int>::max(), '\n');
             continue;
        }
-
-
        return n;
     }
  }//Llave de cierre en la funcion CapturaEntero

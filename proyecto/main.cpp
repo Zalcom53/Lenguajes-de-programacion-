@@ -5,7 +5,7 @@
   Descripcion: Este archivo contiene la implementacion de interprete
 */
 
-#include "interprete.h"
+#include "utileria.h"
 
 int main(){
 

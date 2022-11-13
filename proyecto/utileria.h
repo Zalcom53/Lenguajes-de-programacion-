@@ -72,9 +72,15 @@ if(userMode == 1){
 // Ingresar entrada manuamente
 cout << "Entrada manual\n" << endl;
 } else{
+
+// tomando la entrada de forma manual
+
+cin.getline(
+
 //cargar archivo
 cout << "Cargar entrada desde un archivo\n" << endl;
-
+// Asignando el valor del archivo a una variable de tipo string
+string entrada1 = 
 }// Llave de cierre en else
 
 

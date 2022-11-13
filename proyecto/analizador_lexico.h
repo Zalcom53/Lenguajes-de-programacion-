@@ -15,7 +15,21 @@
 
 using namespace std;
 
-void analizador_lexico(){
+
+#define MAX
+//Definiendo palabras reservadas
+
+char *palabrasReservadas[MAX] = {zero?, if,then, else, let, proc, letrec, in};
+int *numeros[] = {1,2,3,4,5,6,7,8,9,0};
+
+
+/* variable: char *exp
+ * La variale exp toma el valor de la entrada recibida como parametro
+ * el analizador lexico generara los tokens para dicha expresion 
+ * */
+char *exp; 
+
+void analizador_lexico(){			
 
 cout << "Analizador lexico\n" << endl;
 
@@ -27,7 +41,6 @@ cout << "Leyendo flujo de caracteres, espere un momento...\n << endl;
 
 /* Esta variable el parametro de entrada
 */
-Exp* string; 
 
 //Creando retorno;
 

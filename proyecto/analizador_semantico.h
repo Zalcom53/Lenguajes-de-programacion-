@@ -12,5 +12,8 @@ void analizador_semantico(){
 
 cout << " Analizador semantico\n" << endl; 
 
+cout << "Recibiendo grupo de tokens, espere un momento...\n" << endl;
+
+
 
 } // Llave de cierre en la fucion analizador_semantico

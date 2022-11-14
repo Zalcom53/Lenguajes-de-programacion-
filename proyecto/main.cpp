@@ -18,4 +18,4 @@ cin.get(); // pausa
 
   return 0;
   
-} // Llave de cierre en la funcion main
+} // Llave de cierre en la funcion main	

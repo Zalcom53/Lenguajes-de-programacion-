@@ -19,21 +19,42 @@ using namespace std;
 #define MAX
 //Definiendo palabras reservadas
 
-//char *palabrasReservadas[MAX] = {zero?, if,then, else, let, proc, letrec, in};
-//int *numeros[] = {1,2,3,4,5,6,7,8,9,0};
-
-
 /* variable: char *exp
  * La variale exp toma el valor de la entrada recibida como parametro
  * el analizador lexico generara los tokens para dicha expresion 
  * */
 
 
-void analizador_lexico(){			0 
+typedef enum {INTEGER, STRING, REAL} Type;
+typedef struct{
+
+Type type;
+union{
+
+  int integer;
+  char *string;
+  float real;
+
+} x;
+// Llave de cierre en union
+
+} happy_mask_salesman;
+
+happy_mask_salesman value_new_integer(int v){
+
+Value v;
+v.type = INTEGER;
+v.x.integer = v;
+
+return ;
+
+} // Llave de cierre en happy_mask_salesman
+
+void analizador_lexico(){ 
 
 cout << "Analizador lexico\n" << endl;
 
 cout << "Leyendo flujo de caracteres, espere un momento...\n << endl;
 
-
+}
  // Llave de cierre en la funcion analizador_lexico

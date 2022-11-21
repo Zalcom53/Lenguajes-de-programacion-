@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 
 using namespace std;
 
@@ -50,11 +51,41 @@ return ;
 
 } // Llave de cierre en happy_mask_salesman
 
-void analizador_lexico(){ 
+// Definiendo no terminales
+
+// Definiendo terminales
+
+
+/** \fn void analizadr lexico 
+ * \brief Esta funcion se encaraga de listar las funciones disponibles
+ * \param  no recibe parametros
+ * \return no retorna valores de salida
+ */
+void analizador_lexico(char entrada){ 
+
+
+system("title LETREC en C++ - Analizador lexico");
+
+/* vector: tokensgroup
+ * El vector tokensgroup es el contenedor donde se alojara los tokens que se
+ * generan partiendo de la cadena de caracteres.
+ * Este vector tendra un tamaño n donde n es el numero de tokens generados de la expresion
+ * el analizador lexico generara los tokens para dicha expresion 
+ * */
+
+vector tokensgroup = {};
 
 cout << "Analizador lexico\n" << endl;
 
-cout << "Leyendo flujo de caracteres, espere un momento...\n << endl;
+cout << "Leyendo flujo de caracteres, espere un momento...\n" << endl;
+cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
+cout << "Generando tokens...\n" << endl;
+
+//Analizando la cadena y agrupanndo por tokens la cadena de caracteres 
+
+whhile(charFlux < 
+
+return tokensgroup;
 
 }
  // Llave de cierre en la funcion analizador_lexico

@@ -21,6 +21,7 @@ int CapturaEntero(const char solicitud[]);
 #include <iostream>
 #include <cstdlib>
 #include <limits>
+#include <fstream>
 
 using namespace std;
 
@@ -71,6 +72,11 @@ switch(userSelection){
   print_about();
   break;
 
+ // case 885311:
+  //all_range_mode();
+  //break;
+  
+
 }// Llave de cierre en switch para userSelection
 
 }while(userSelection != 0);
@@ -86,6 +92,9 @@ switch(userSelection){
  */
  int menu(int){
 
+
+	system("title LETREC en C++ - Menu");
+  system("cls"); // limpiando pantalla 
   int n; // Varaible para uso local -> esta variable es de uso local; La finalidad de esta variable es un contenedor para retornar un valor aceptado. 
   cout << "A continuacion se muestran las opciones disponibles.\n" << endl;
 
@@ -152,10 +161,12 @@ cout << "Interpretando entrada...\n" << endl;
  //---------------------------------------------------------------------------
 void print_tutorial(){
 
+system("title LETREC en C++ - Tutorial/Guia");
+
 cout << "Bienvendo al tutorial!\n" << endl;
 
 cout << "Ejecutando tutorial\n" << endl; 
-system("start https://github.com/Zalcom53/Lenguajes-de-programacion-/tree/main/proyecto/Manual");
+system("start https://github.com/Zalcom53/Lenguajes-de-programacion-/blob/main/proyecto/Manual/Manual%20de%20usuario.pdf");
 
 system("pause");
 
@@ -175,6 +186,8 @@ system("pause");
  */
 
 void print_about() {
+
+  system("title LETREC en C++ - Acerca de");
 
   cout << "Acerca de...\n" << endl;
   
@@ -201,19 +214,21 @@ void print_about() {
 */
 int CapturaEntero(const char solicitud[]){
 
+  // Para cada uno de los casos se lanza una alerta en forma de sonido para alertar al usuario de algun error en el flujo de entrada
+
   int n; // Variable de uso local
 
      while(true){
          cout << solicitud;
         cin >> n;
          if(cin.bad()){
-            cout << "Ocurrio un error irrecuperable en el flujo de entrada" << endl;
+            cout << "Ocurrio un error irrecuperable en el flujo de entrada\a" << endl;
             exit(EXIT_FAILURE);
              return 1;
          } // Llave de cierre en cin.bad
 
          if(cin.fail()){
-            cout << "Error: no es un numero, \nintroduzca de nuevo..." << endl;
+            cout << "Error: no es un numero, \nintroduzca de nuevo...\a" << endl;
             cin.clear();
             cin.ignore(numeric_limits<int>::max(), '\n');
              continue;
@@ -223,7 +238,7 @@ int CapturaEntero(const char solicitud[]){
 
           //Asegurando que el usuario de una entrada dentro del rango que ese esperaria 
           do{
-          cout << "Error: seleccion fuera de rango\n" << endl;
+          cout << "Error: seleccion fuera de rango\a\n" << endl;
           n = CapturaEntero("Seleccione una opcion valida: : ");
           }while( n < MINUSEROPTION || n > MAXSUEROPTION);
 

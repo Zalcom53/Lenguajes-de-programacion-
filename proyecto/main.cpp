@@ -11,7 +11,7 @@
 #include "utileria.h"
 
 int main(){
-
+	
 run();
 
 cin.get(); // pausa

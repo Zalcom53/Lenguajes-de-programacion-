@@ -11,7 +11,9 @@
 #include "utileria.h"
 
 int main(){
-	
+		
+	system("title LETREC en C++");
+
 run();
 
 cin.get(); // pausa

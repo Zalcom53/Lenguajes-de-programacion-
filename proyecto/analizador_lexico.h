@@ -10,58 +10,39 @@
 * retorno
 */
 
+ 
+%{
 #include <iostream>
-#include <cstdlib>
+#include <cstdlib.h>
 #include <vector>
-
+#include <stdio.h>
+#include <string.h>
+FILE *yyin;
+  
+%}
 using namespace std;
 
-
-#define MAX
-//Definiendo palabras reservadas
-
-/* variable: char *exp
- * La variale exp toma el valor de la entrada recibida como parametro
- * el analizador lexico generara los tokens para dicha expresion 
- * */
+// tokens
 
 
-typedef enum {INTEGER, STRING, REAL} Type;
-typedef struct{
+//Operadores logicos y aritmeticos
 
-Type type;
-union{
-
-  int integer;
-  char *string;
-  float real;
-
-} x;
-// Llave de cierre en union
-
-} happy_mask_salesman;
-
-happy_mask_salesman value_new_integer(int v){
-
-Value v;
-v.type = INTEGER;
-v.x.integer = v;
-
-return ;
-
-} // Llave de cierre en happy_mask_salesman
-
-// Definiendo no terminales
-
-// Definiendo terminales
-
+// Palabras reservaas
+{ZERO?}  {printf("\nPalabra reservada ZERO?: (%s)", yytext;}
+{IF}     {printf("\nPalabra reservada IF: (%s)", yytext;}
+{THEN}   {printf("\nPalabra reservada THEN: (%s)", yytext;}
+{ELSE}   {printf("\nPalabra reservada ELSE: (%s)", yytext;}
+{LET}    {printf("\nPalabra reservada LET: (%s)", yytext;}
+{IN}     {printf("\nPalabra reservada IN: (%s)", yytext;}
+{PROC}   {printf("\nPalabra reservada PROC: (%s)", yytext;}
+{LETREC} {printf("\nPalabra reservada LETREC: (%s)", yytext;}
 
 /** \fn void analizadr lexico 
  * \brief Esta funcion se encaraga de listar las funciones disponibles
  * \param  no recibe parametros
  * \return no retorna valores de salida
  */
-void analizador_lexico(char entrada){ 
+void analizador_lexico(){ 
 
 
 system("title LETREC en C++ - Analizador lexico");
@@ -73,19 +54,15 @@ system("title LETREC en C++ - Analizador lexico");
  * el analizador lexico generara los tokens para dicha expresion 
  * */
 
-vector tokensgroup = {};
-
-cout << "Analizador lexico\n" << endl;
+//vector tokensgroup = {|};
 
 cout << "Leyendo flujo de caracteres, espere un momento...\n" << endl;
-cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
-cout << "Generando tokens...\n" << endl;
+//cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
+cout << "Generando tokens, espere un momento...\n" << endl;
 
 //Analizando la cadena y agrupanndo por tokens la cadena de caracteres 
 
-whhile(charFlux < 
-
-return tokensgroup;
+system("pause");
 
 }
  // Llave de cierre en la funcion analizador_lexico

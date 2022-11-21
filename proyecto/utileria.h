@@ -22,6 +22,10 @@ int CapturaEntero(const char solicitud[]);
 #include <cstdlib>
 #include <limits>
 #include <fstream>
+#include <string.h>
+//#include "analizador_lexico.h"
+//#include "analizador_semantico.h"
+//#include "interprete.h"
 
 using namespace std;
 
@@ -38,7 +42,7 @@ using namespace std;
 /* \fn int run
  * \brief Esta funcion se encarga de ejecutar todo el pro
  * \param no recibe parametros
- * \return no retorna valores de salida
+ * \return no retorna valores
 */
 void run() {
 
@@ -50,7 +54,6 @@ system("color 0a");
 int userSelection;
 
 //Secuencia de inicio
-
 
 do{
 userSelection = menu(userSelection);
@@ -118,36 +121,53 @@ void start(){
 */
 int exe_mode; 
 
-/* variable: entrada
+
+/* variable: entradaLinea
+* La variable entradaLinea corresponde a la linea de caracteres que ese esta detectando
+*/
+string entradaLinea;
+/* variable: entradaS
+* La variable entradaS corresponde a la entrada del usuario como un string, para despues
+* ser procesada para obtener flujo lienal de caracteres
+*/
+string entradaS;
+
+/* variable: entradaC
 * La variable entrada corresponde al flujo de caracteres recibidos manualmente o por un archivo 
 */
-char entrada[MAXINPUT];
-
+//char entradaC[MAXINPUT];
 
 cout << "\nIngresar entrada manualmente[1]" << endl;
 cout << "Cargar archivo[2]\n" << endl;
 
-cout << "NOTA: Si se carga la entrada desde un archivo, solo se tiene que arrastrar el archivo desde el directorio.\n" << endl;
+cout << "NOTAS.\a\n";
+cout << "Se debe modificar el codigo que se desea probar directamente en archivo .txt.\n" << endl;
+cout << "No cambiar el nombre del archivo del directorio, el nombre por defecto debe ser: codigoletrec con extencion .txt\n" << endl;
+
 exe_mode = CapturaEntero("Ingrese un modo de ejecucion: ");
 
-exe_mode == 1 ? cin >> entrada : cout << "prueba";
+exe_mode == 1 ? cin >> entradaS : cout << "Cargando archivo, espere un momento...\n";
 
-//chuky begins
+ifstream archivo("codigoletrec.txt");
 
-cout << "Generando tokes...\n" << endl;
-//analizador_lexico(entrada);
+while(getline(archivo, entradaLinea)){
 
-cout << "Recibiendo tokens...\n" << endl;
-//analizador_semantico(tokens);
+entradaS = entradaS + entradaLinea + "\n";
 
-cout << "Interpretando entrada...\n" << endl;
-//interprete(expression);
 
-}// LLave de cierre en al funcion start
+}// Llave de cierre while
 
+cout << entradaS << endl;
+system("pause");
+}
+  
+//chuky begins 
+
+//analizador_lexico(entradaS);
+//analizador_semantico():
+//analizador_semantico();
 
 //---------------------------------------------------------------------------
-
 /** \fn print_tutorial 
  * \brief Esta funcion tiene como objetivo de mostrar el uso del sistema.
  * \param no toma valores de entrada
@@ -187,12 +207,15 @@ system("pause");
 
 void print_about() {
 
+  
+  system("cls");
+
   system("title LETREC en C++ - Acerca de");
 
   cout << "Acerca de...\n" << endl;
   
-  cout << "Este software es parte de una proyecto finial para la materia de Lenguajes de programacion,";
-  cout << "este software contiene una analizado lexico, sintactico y un interprete del lenguaje LETREC\n" << endl;
+  cout << "Este software es parte de una proyecto finial para la materia de Lenguajes de programacion,\n";
+  cout << "este software contiene un analizador lexico, sintactico y un interprete del lenguaje LETREC.\n" << endl;
 
   cout << "Universidad de Sonora - Licenciatura en ciencias de la computacion.\n" << endl;
 

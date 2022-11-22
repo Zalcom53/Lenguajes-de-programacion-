@@ -20,9 +20,32 @@ CONST_INTEGER (-?[1-9][0-9]{0,4})|0
 CONST_FLOAT {DIGITO}{0,8}{CHAR_PUNTO}{DIGITO}{1,8}
 
 //Operadores logicos y aritmeticos
+OP_SUMA        ["+"]
+OP_RESTA       ["-"]
+OP_MULT        ["*"]
+OP_DIV         ["/"]
+OP_IGUAL       ["="]
+OP_MAYOR       [">"]
+OP_MENOR       [">"]
+OP_MAYORIGUAL  [">="]
+OP_MENORIGUAL  ["<="]
+OP_COMP_IGUAL  ["=="]
 
+//caracteres de apertura y cierre
+PARENTESIS_A ["("]
+PARENTESIS_C [")"]
 
-// Palabras reservaas
+// Palabras reservadas
+ZERO?  "if | IF"
+IF     "while | WHILE"
+THEN   "then | THEN"
+ELSE   "else | ELSE"
+LET    "let | LET"
+IN     "in | IN"
+LETREC "letrec | LETREC"
+PROC   "proc | PROC"
+
+%%
 {ZERO?}  {printf("\nPalabra reservada ZERO?: (%s)", yytext;}
 {IF}     {printf("\nPalabra reservada IF: (%s)", yytext;}
 {THEN}   {printf("\nPalabra reservada THEN: (%s)", yytext;}
@@ -31,3 +54,5 @@ CONST_FLOAT {DIGITO}{0,8}{CHAR_PUNTO}{DIGITO}{1,8}
 {IN}     {printf("\nPalabra reservada IN: (%s)", yytext;}
 {LETREC} {printf("\nPalabra reservada LETREC: (%s)", yytext;}
 {PROC}   {printf("\nPalabra reservada PROC: (%s)", yytext;}
+
+%%

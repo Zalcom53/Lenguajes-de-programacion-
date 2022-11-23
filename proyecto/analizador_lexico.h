@@ -10,32 +10,13 @@
 * retorno
 */
 
- 
-%{
-#include <iostream>
-#include <cstdlib.h>
-#include <vector>
-#include <stdio.h>
-#include <string.h>
-FILE *yyin;
-  
-%}
+#define LENGTH_RES 12
 using namespace std;
 
-// tokens
+// palabras reservadas
+char *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
+//terminales
 
-
-//Operadores logicos y aritmeticos
-
-// Palabras reservaas
-{ZERO?}  {printf("\nPalabra reservada ZERO?: (%s)", yytext;}
-{IF}     {printf("\nPalabra reservada IF: (%s)", yytext;}
-{THEN}   {printf("\nPalabra reservada THEN: (%s)", yytext;}
-{ELSE}   {printf("\nPalabra reservada ELSE: (%s)", yytext;}
-{LET}    {printf("\nPalabra reservada LET: (%s)", yytext;}
-{IN}     {printf("\nPalabra reservada IN: (%s)", yytext;}
-{PROC}   {printf("\nPalabra reservada PROC: (%s)", yytext;}
-{LETREC} {printf("\nPalabra reservada LETREC: (%s)", yytext;}
 
 /** \fn void analizadr lexico 
  * \brief Esta funcion se encaraga de listar las funciones disponibles

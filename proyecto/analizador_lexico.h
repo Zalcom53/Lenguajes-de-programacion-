@@ -10,51 +10,40 @@
 * retorno
 */
 
-#include <iostream>
-#include <cstdlib>
-
+#define LENGTH_RES 12
 using namespace std;
 
+// palabras reservadas
+char *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
+//terminales
 
-#define MAX
-//Definiendo palabras reservadas
 
-/* variable: char *exp
- * La variale exp toma el valor de la entrada recibida como parametro
+/** \fn void analizadr lexico 
+ * \brief Esta funcion se encaraga de listar las funciones disponibles
+ * \param  no recibe parametros
+ * \return no retorna valores de salida
+ */
+void analizador_lexico(){ 
+
+
+system("title LETREC en C++ - Analizador lexico");
+
+/* vector: tokensgroup
+ * El vector tokensgroup es el contenedor donde se alojara los tokens que se
+ * generan partiendo de la cadena de caracteres.
+ * Este vector tendra un tamaño n donde n es el numero de tokens generados de la expresion
  * el analizador lexico generara los tokens para dicha expresion 
  * */
 
+//vector tokensgroup = {|};
 
-typedef enum {INTEGER, STRING, REAL} Type;
-typedef struct{
+cout << "Leyendo flujo de caracteres, espere un momento...\n" << endl;
+//cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
+cout << "Generando tokens, espere un momento...\n" << endl;
 
-Type type;
-union{
+//Analizando la cadena y agrupanndo por tokens la cadena de caracteres 
 
-  int integer;
-  char *string;
-  float real;
-
-} x;
-// Llave de cierre en union
-
-} happy_mask_salesman;
-
-happy_mask_salesman value_new_integer(int v){
-
-Value v;
-v.type = INTEGER;
-v.x.integer = v;
-
-return ;
-
-} // Llave de cierre en happy_mask_salesman
-
-void analizador_lexico(){ 
-
-cout << "Analizador lexico\n" << endl;
-
-cout << "Leyendo flujo de caracteres, espere un momento...\n << endl;
+system("pause");
 
 }
  // Llave de cierre en la funcion analizador_lexico

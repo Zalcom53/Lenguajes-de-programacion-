@@ -10,7 +10,7 @@
 
 void analizador_semantico(){
 
-cout << " Analizador semantico\n" << endl; 
+system("title LETREC en C++ - Analizador semantico");
 
 cout << "Recibiendo grupo de tokens, espere un momento...\n" << endl;
 

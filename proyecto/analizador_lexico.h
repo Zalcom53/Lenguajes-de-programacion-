@@ -10,11 +10,17 @@
 * retorno
 */
 
-#define LENGTH_RES 12
+
+#include <iostream>
+#include <cstdlib>
+
 using namespace std;
 
+#define LENGTH_RES 12
+
+
 // palabras reservadas
-char *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
+char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
 //terminales
 
 
@@ -47,3 +53,13 @@ system("pause");
 
 }
  // Llave de cierre en la funcion analizador_lexico
+
+ //void validarTokens(vector <char> tokens){
+
+//cout << "Validando tokens, espere un momento...\n" << endl;
+
+//Comparamos cada uno de los elemntos que estan en el vector para aseguranos que los elementos que contenga sean validos en la gramatica
+
+
+
+// } // Llave de cierre en validar token 

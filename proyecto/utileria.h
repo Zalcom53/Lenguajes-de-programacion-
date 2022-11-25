@@ -152,7 +152,7 @@ exe_mode = CapturaEntero("Ingrese un modo de ejecucion: ");
 //exe_mode == 1 ? cin >> entradaS : fileToString();
 if(exe_mode == 1 ){
   
-  cout << "Ingrese expresion: ";
+  cout << "\nIngrese expresion: ";
   ws(cin);
   getline(cin, entradaS);
   

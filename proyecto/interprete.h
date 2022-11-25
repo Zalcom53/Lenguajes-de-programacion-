@@ -11,8 +11,5 @@ void interprete(){
 
 system("title LETREC en C++ - Interprete LETREC");
 
-cout << "Recibiendo arbol de sintaxis abstracta, espere un momento...\n" << endl;
-
-
 
 }// Llave de cierre en la fucion interprete

@@ -87,11 +87,14 @@ cout << "Validando tokens, espere un momento...\n" << endl;
 */
  void imprimirTokens(vector<string> tokens){
 
- for (const string &s: tokens) {
 
   cout << "Imprimiendo tokens detectados: " << endl;
-  cout << s << endl;
+ for (const string &s: tokens){
+
+  cout << s;
+  cout << " | ";
     }
+    cout << endl;
 
  } // Llave de cierre en la funcion imprimir tokens
 

@@ -29,7 +29,12 @@ char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "le
  * \param  no recibe parametros
  * \return no retorna valores de salida
  */
-void analizador_lexico(){ 
+void analizador_lexico(string){ 
+
+  /* Vector: Vector_aux
+  * Este vector almacena los tokens que son aceptados por el analizador lexico
+  * este vector se retorna al analizador semantico para generar una expresion
+  */
 
 
 system("title LETREC en C++ - Analizador lexico");
@@ -41,7 +46,7 @@ system("title LETREC en C++ - Analizador lexico");
  * el analizador lexico generara los tokens para dicha expresion 
  * */
 
-//vector tokensgroup = {|};
+//vector tokensgroup = {};
 
 cout << "Leyendo flujo de caracteres, espere un momento...\n" << endl;
 //cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
@@ -49,17 +54,22 @@ cout << "Generando tokens, espere un momento...\n" << endl;
 
 //Analizando la cadena y agrupanndo por tokens la cadena de caracteres 
 
+validarTokens();
+
+return Vector_aux;
+
 system("pause");
 
 }
  // Llave de cierre en la funcion analizador_lexico
 
- //void validarTokens(vector <char> tokens){
+void validarTokens(){
 
-//cout << "Validando tokens, espere un momento...\n" << endl;
+cout << "Validando tokens, espere un momento...\n" << endl;
 
 //Comparamos cada uno de los elemntos que estan en el vector para aseguranos que los elementos que contenga sean validos en la gramatica
 
 
 
-// } // Llave de cierre en validar token 
+
+ } // Llave de cierre en validar token 

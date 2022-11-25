@@ -15,8 +15,7 @@ void start();
 void print_tutorial();
 void print_about();
 int CapturaEntero(const char solicitud[]);
-//void analizador_lexico(entradaS);
-
+vector<string> analizador_lexico(string);
 //---------------------------------------------------------------------------
 
 
@@ -147,13 +146,6 @@ string entradaS;
 //char entradaC[MAXINPUT];
 
 
-/* variable: tokens
-* El vector tokens contiene cada uno de los elementos de el codigo leido por el sistema, este vector 
-* se pasa al analizador lexico para su veficacion
-*/
-//char entradaC[MAXINPUT];
-vector <string> tokens;
-
 cout << "\nIngresar entrada manualmente[1]" << endl;
 cout << "Cargar archivo[2]\n" << endl;
 
@@ -178,30 +170,14 @@ ifstream archivo("codigoletrec.txt");
 while(getline(archivo, entradaLinea)){
 
 entradaS = entradaS + entradaLinea + "\n";
-} // Llave de cierre en while 
+  } // Llave de cierre en while 
 
-} // Llave de cierre en while 
+   } // Llave de cierre en while 
 
-cout << "Esta es la entrada detectada: \n" << endl;
-cout << entradaS << endl;
-cout << "\n" << endl;
-
-  istringstream iss(entradaS);
-    string s;
-    while (iss >> s) {
-        tokens.push_back(s);
-    }
-
- for (const string &s: tokens) {
-
-  cout << "Imprimiendo tokens detectados: " << endl;
-  cout << s << endl;
-    }
-  system("pause");
 }
 //chuky begins 
 
-//analizador_lexico(entradaS);
+analizador_lexico(entradaS);
 //analizador_semantico():
 //analizador_semantico();
 

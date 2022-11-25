@@ -19,6 +19,13 @@ using namespace std;
 #define LENGTH_RES 12
 
 
+/* variable: tokens
+* El vector tokens contiene cada uno de los elementos de el codigo leido por el sistema, este vector 
+* se pasa al analizador lexico para su veficacion
+*/
+vector <string> tokens;
+
+
 // palabras reservadas
 char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
 //terminales
@@ -29,47 +36,78 @@ char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "le
  * \param  no recibe parametros
  * \return no retorna valores de salida
  */
-void analizador_lexico(string){ 
-
-  /* Vector: Vector_aux
-  * Este vector almacena los tokens que son aceptados por el analizador lexico
-  * este vector se retorna al analizador semantico para generar una expresion
-  */
-
+vector<string> analizador_lexico(string){ 
 
 system("title LETREC en C++ - Analizador lexico");
 
-/* vector: tokensgroup
- * El vector tokensgroup es el contenedor donde se alojara los tokens que se
- * generan partiendo de la cadena de caracteres.
- * Este vector tendra un tamaño n donde n es el numero de tokens generados de la expresion
- * el analizador lexico generara los tokens para dicha expresion 
- * */
+cout << "Esta es la entrada detectada: \n" << endl;
+cout << entradaS << endl;
+cout << "\n" << endl;
 
-//vector tokensgroup = {};
+generarTokens(entradaS);
+imprimirTokens(tokens);
 
-cout << "Leyendo flujo de caracteres, espere un momento...\n" << endl;
-//cout << "Flujo de caracteres detectado: " << charFlux << "\n" << endl;
-cout << "Generando tokens, espere un momento...\n" << endl;
-
-//Analizando la cadena y agrupanndo por tokens la cadena de caracteres 
-
-validarTokens();
-
-return Vector_aux;
+return tokens;
 
 system("pause");
 
 }
  // Llave de cierre en la funcion analizador_lexico
 
+//---------------------------------------------------------------------------
+
+/** \fn  validarTokens
+ * \brief Esta funcion tiene como objetivo validar los tokens generados, es decir comprobar que cada uno de los elementos en el vector contengan 
+ * tokens aceptados por la gramatica 
+ * \param una un vector
+ * \return un status de verdadero o falso que nos dira si es aceptado o no por el analizador lexico 
+*/
 void validarTokens(){
 
 cout << "Validando tokens, espere un momento...\n" << endl;
 
 //Comparamos cada uno de los elemntos que estan en el vector para aseguranos que los elementos que contenga sean validos en la gramatica
 
-
-
-
  } // Llave de cierre en validar token 
+
+
+//---------------------------------------------------------------------------
+
+/** \fn  imprimirTokens
+ * \brief Esta funcio tiene como objetivo imprimir los los tokens que son aceptados 
+ * \param una un vector
+ * \return no tiene valores de retorno
+*/
+ imprimirTokens(){
+
+ for (const string &s: tokens) {
+
+  cout << "Imprimiendo tokens detectados: " << endl;
+  cout << s << endl;
+    }
+  system("pause");
+
+ } // Llave de cierre en la funcion imprimir tokens
+
+//---------------------------------------------------------------------------
+
+/** \fn  generarTokens
+ * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
+ * Una vez tomado el string generara tokens para pasar a una fase de validacion
+ * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \param una cadena de caracteres
+ * \return retorna un vector con tokens aceptados y propios de a gramatica
+*/
+ generarTokens(){
+
+  istringstream iss(entradaS);
+    string s;
+    while (iss >> s) {
+      tokens.push_back(s);
+    }
+
+
+    validarTokens();
+
+
+ } // Llave de cierre en la funcion generar tokens

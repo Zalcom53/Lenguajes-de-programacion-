@@ -15,7 +15,7 @@ void start();
 void print_tutorial();
 void print_about();
 int CapturaEntero(const char solicitud[]);
-vector<string> analizador_lexico(string);
+vector<string> analizador_lexico(entradaS);
 //---------------------------------------------------------------------------
 
 

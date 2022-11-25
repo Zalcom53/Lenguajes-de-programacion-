@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "utileria.h"
 
 using namespace std;
 

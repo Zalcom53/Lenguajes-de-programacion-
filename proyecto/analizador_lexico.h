@@ -13,18 +13,25 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "utileria.h"
+#include <vector>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
 #define LENGTH_RES 12
 
 
-/* variable: tokens
+void imprimirTokens(vector<string> tokens);
+void validarTokens();
+void analizador_lexico(string entradaS);
+void generarTokens(string entradaS);
+
+/* vector: tokens
 * El vector tokens contiene cada uno de los elementos de el codigo leido por el sistema, este vector 
 * se pasa al analizador lexico para su veficacion
 */
-vector <string> tokens;
+vector<string> tokens;
 
 
 // palabras reservadas
@@ -37,7 +44,7 @@ char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "le
  * \param  no recibe parametros
  * \return no retorna valores de salida
  */
-vector<string> analizador_lexico(string){ 
+void analizador_lexico(string entradaS){ 
 
 system("title LETREC en C++ - Analizador lexico");
 
@@ -48,12 +55,11 @@ cout << "\n" << endl;
 generarTokens(entradaS);
 imprimirTokens(tokens);
 
-return tokens;
+
 
 system("pause");
 
-}
- // Llave de cierre en la funcion analizador_lexico
+}// Llave de cierre en la funcion analizador_lexico
 
 //---------------------------------------------------------------------------
 
@@ -79,14 +85,13 @@ cout << "Validando tokens, espere un momento...\n" << endl;
  * \param una un vector
  * \return no tiene valores de retorno
 */
- imprimirTokens(){
+ void imprimirTokens(vector<string> tokens){
 
  for (const string &s: tokens) {
 
   cout << "Imprimiendo tokens detectados: " << endl;
   cout << s << endl;
     }
-  system("pause");
 
  } // Llave de cierre en la funcion imprimir tokens
 
@@ -99,16 +104,13 @@ cout << "Validando tokens, espere un momento...\n" << endl;
  * \param una cadena de caracteres
  * \return retorna un vector con tokens aceptados y propios de a gramatica
 */
- generarTokens(){
+ void generarTokens(string entradaS){
 
   istringstream iss(entradaS);
     string s;
     while (iss >> s) {
       tokens.push_back(s);
     }
-
-
     validarTokens();
-
 
  } // Llave de cierre en la funcion generar tokens

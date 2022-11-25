@@ -15,7 +15,6 @@ void start();
 void print_tutorial();
 void print_about();
 int CapturaEntero(const char solicitud[]);
-vector<string> analizador_lexico(entradaS);
 //---------------------------------------------------------------------------
 
 
@@ -27,11 +26,11 @@ vector<string> analizador_lexico(entradaS);
 #include <stdio.h>
 #include <vector>
 #include <cstring>
-#include <iterator>
+//#include <iterator>
 #include <sstream>
-//#include <bits/stdc++.h>
-//#include "analizador_lexico.h"
+#include <bits/stdc++.h>
 
+#include "analizador_lexico.h"
 //#include "analizador_semantico.h"
 //#include "interprete.h"
 
@@ -129,21 +128,16 @@ void start(){
 */
 int exe_mode; 
 
-
 /* variable: entradaLinea
 * La variable entradaLinea corresponde a la linea de caracteres que ese esta detectando
 */
+
 string entradaLinea;
 /* variable: entradaS
 * La variable entradaS corresponde a la entrada del usuario como un string, para despues
 * ser procesada para obtener flujo lienal de caracteres
 */
 string entradaS;
-
-/* variable: entradaC
-* La variable entrada corresponde al flujo de caracteres recibidos manualmente o por un archivo 
-*/
-//char entradaC[MAXINPUT];
 
 
 cout << "\nIngresar entrada manualmente[1]" << endl;
@@ -174,12 +168,20 @@ entradaS = entradaS + entradaLinea + "\n";
 
    } // Llave de cierre en while 
 
-}
 //chuky begins 
 
+// Entregamos un string y recibimos un vector con los tokens
 analizador_lexico(entradaS);
+
+//Recibimos un conjunto de tokens y retornamos una exprecion decuedo a la sintaxis abstracta
 //analizador_semantico():
+
+//Recibimos una expresion de acuerdo a la sintaxis abstracta y retornamos un valor expresado 
 //analizador_semantico();
+
+//chuky ends
+}
+
 
 //---------------------------------------------------------------------------
 /** \fn print_tutorial 

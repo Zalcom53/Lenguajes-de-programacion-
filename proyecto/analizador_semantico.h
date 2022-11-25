@@ -28,6 +28,8 @@ cout << "Recibiendo grupo de tokens, espere un momento...\n" << endl;
 
 // y ya deplano ver si es un numero o un idenficador
 
+// y si no arrojar el error de que no es una entrada valida
+
 // pasar lo que se encunetre a  un template y que arme una expresion para retornarla al interprete 
 
 

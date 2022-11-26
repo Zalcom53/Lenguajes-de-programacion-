@@ -5,15 +5,68 @@
   Descripcion: Este archivo contiene el codigo del analziador semantico
 */
 
+
+  // Definindo expresiones de la sintaxis concreta
+  struct e1{
+  //number
+    int number;
+  //----------------------
+  }e_type1;
+
+  struct e2{
+  //-(Expression,Expression)
+    int number1, number2;
+
+  }e_type2;
+
+//----------------------
+   struct e3{
+  //zero?()
+  
+  
+
+  }e_type3;
+//----------------------
+   struct e4{
+  //if Expression then Expression else Expression 
+  
+
+  }e_type4;
+//----------------------
+   struct e5{
+  //Identifier
+  
+
+  }e_type5;
+//----------------------
+   struct e6{
+  //let (Identifier) = Expression in Expression
+  
+
+  }e_type6;
+  //----------------------
+   struct e7{
+    //proc(Identifier) Expression  
+  
+
+  }e_type7;
+//----------------------
+
+   struct e8{
+  //(Expression Expresssion)
+  
+
+  }e_type8;
+//----------------------
+
+struct e9{
+  
+  //letrec Identifier(identifier) = Expression in Expression
+
+  }e_type9;
+//----------------------
+
 #include "analizador_lexico.h"
-
-
-// palabras reservadas
-char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
-char const *simbolos[LENGTH_RES] = {"-", "(", ")", ",", "="};
-
-// Identifiacioes
-// Numeros
 
 /** \fn  analizador_sintactico
  * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
@@ -43,7 +96,41 @@ cout << "Recibiendo grupo de tokens, espere un momento...\n" << endl;
    imprimirIdentificadoresNoValidos();
    getch();
 
+//Set values for any expresion
 
+switch(token_key){
+
+case 1:
+e_type1.number = 
+break;
+
+case 2:
+e_type2.number1 =;
+e_type2.number2 =;
+break;
+
+case 3:
+
+break;
+
+case 4:
+break;
+
+case 5:
+break;
+
+case 6:
+break;
+
+case 7:
+break;
+
+case 8: 
+break;
+
+case 9:
+break;
+}
 
 } // Llave de cierre en la fucion analizador_semantico
 

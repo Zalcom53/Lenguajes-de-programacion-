@@ -24,13 +24,16 @@
 
 using namespace std;
 
-#define LENGTH_RES 12
+#define LENGTH_RES 26
 
 
 void imprimirTokens(vector<string> tokens);
-void validarTokens();
+tokens_group validarTokens();
 void analizador_lexico(string entradaS);
 void generarTokens(string entradaS);
+bool verficarIdentificador();
+bool verificarNumero();
+bool verificarReservada();
 
 /* vector: tokens
 * El vector tokens contiene cada uno de los elementos de el codigo leido por el sistema, este vector 
@@ -39,9 +42,20 @@ void generarTokens(string entradaS);
 vector<string> tokens;
 
 
+/* struct: tokens
+* Esta estructura corresponde a los
+*/
+struct tokens_group{
+
+vector<int> number;
+vector<string> id;
+vector<string> reserved_keyword;
+
+};
+
 // palabras reservadas
-char const *palabrasReservadas[LENGTH_RES] = {};
-//terminales
+char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "in", "proc", "letrec"};
+
 
 
 /** \fn void analizadr lexico 
@@ -62,7 +76,6 @@ generarTokens(entradaS);
 imprimirTokens(tokens);
 
 
-
 system("pause");
 
 }// Llave de cierre en la funcion analizador_lexico
@@ -70,16 +83,26 @@ system("pause");
 //---------------------------------------------------------------------------
 
 /** \fn  validarTokens
- * \brief Esta funcion tiene como objetivo validar los tokens generados, es decir comprobar que cada uno de los elementos en el vector contengan 
+ * \brief Esta funcion tiene como objetivo validar los tokens generados, 
+ * es decir comprobar que cada uno de los elementos en el vector contengan 
  * tokens aceptados por la gramatica 
  * \param una un vector
- * \return un status de verdadero o falso que nos dira si es aceptado o no por el analizador lexico 
+ * \return un struct que contiene los vectores con cada uno de los elementos validos
 */
-void validarTokens(){
+tokens_group validarTokens(){
 
 cout << "Validando tokens, espere un momento...\n" << endl;
 
 //Comparamos cada uno de los elemntos que estan en el vector para aseguranos que los elementos que contenga sean validos en la gramatica
+
+//Comprobamos cada uno de los componentes para ver a que tipo de tokens corresponde
+verficarIdentificador();
+verificarNumero();
+verificarReservada();
+
+
+return tokens_group;
+
 
  } // Llave de cierre en validar token 
 
@@ -94,7 +117,7 @@ cout << "Validando tokens, espere un momento...\n" << endl;
  void imprimirTokens(vector<string> tokens){
 
 
-  cout << "Imprimiendo tokens detectados: " << endl;
+  cout << "Imprimiendo tokens neto detectados: " << endl;
  for (const string &s: tokens){
 
   cout << s;
@@ -115,7 +138,7 @@ cout << "Validando tokens, espere un momento...\n" << endl;
 */
  void generarTokens(string entradaS){
 
-  istringstream iss(entradaS);
+  istringstream iss(entradaS); 
     string s;
     while (iss >> s) {
       tokens.push_back(s);
@@ -126,26 +149,24 @@ cout << "Validando tokens, espere un momento...\n" << endl;
 //---------------------------------------------------------------------------
 
 
-/** \fn  verificarReservada
- * \brief Esta funcion se encarga de detectar aquellos componentes del vector que se encuentran dentro de las palabras reservadas 
- * Una vez tomado el string generara tokens para pasar a una fase de validacion
- * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
- * \param una cadena de caracteres
- * \return retorna un vector con tokens aceptados y propios de a gramatica
+/** \fn  verificarReservada 
+ * \brief Esta funcion detecta si el elemento que se esta escaneando corresponde a
+ * a una palabra reservada
+ * \param una cadena de caracteres 
+ * \return retorna un elemento al vector palabra reservada
 */
  bool verificarReservada(){
 
-  
+
 
 } // LLave de cierre en verificarReservada
 //---------------------------------------------------------------------------
 
 /** \fn  verificarNumero 
- * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
- * Una vez tomado el string generara tokens para pasar a una fase de validacion
- * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \brief Esta funcion detecta si el elemento que se esta escanenado corresponde
+ * a un numero
  * \param una cadena de caracteres
- * \return retorna un vector con tokens aceptados y propios de a gramatica
+ * \return retorna un elemtno al vector numero
 */
  bool verificarNumero(){
 
@@ -155,13 +176,13 @@ cout << "Validando tokens, espere un momento...\n" << endl;
  }  // LLave de cierre en esNumer0
 //---------------------------------------------------------------------------
 /** \fn  verficarIdentificador
- * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
- * Una vez tomado el string generara tokens para pasar a una fase de validacion
- * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \brief Esta funcion detecta si el elemento que se esta escaneando corresponde
+ * a un identificador y se almacena en en un vector de tipo identificador
  * \param una cadena de caracteres
- * \return retorna un vector con tokens aceptados y propios de a gramatica
+ * \return retorna un elemento al vector identificador
 */
  bool verificarIdentificador(){
+
 
 
  }// Llave de cierre en esIdentificador

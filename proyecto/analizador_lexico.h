@@ -16,6 +16,11 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <windows.h>
+
 
 using namespace std;
 
@@ -35,7 +40,7 @@ vector<string> tokens;
 
 
 // palabras reservadas
-char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "proc", "letrec"};
+char const *palabrasReservadas[LENGTH_RES] = {};
 //terminales
 
 
@@ -48,10 +53,11 @@ void analizador_lexico(string entradaS){
 
 system("title LETREC en C++ - Analizador lexico");
 
-cout << "Esta es la entrada detectada: \n" << endl;
+cout << "Esta es la entrada detectada: " << endl;
 cout << entradaS << endl;
 cout << "\n" << endl;
 
+//Se generan los tokens partiendo del flujo lienal de caracteres 
 generarTokens(entradaS);
 imprimirTokens(tokens);
 
@@ -117,3 +123,48 @@ cout << "Validando tokens, espere un momento...\n" << endl;
     validarTokens();
 
  } // Llave de cierre en la funcion generar tokens
+//---------------------------------------------------------------------------
+
+
+/** \fn  verificarReservada
+ * \brief Esta funcion se encarga de detectar aquellos componentes del vector que se encuentran dentro de las palabras reservadas 
+ * Una vez tomado el string generara tokens para pasar a una fase de validacion
+ * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \param una cadena de caracteres
+ * \return retorna un vector con tokens aceptados y propios de a gramatica
+*/
+ bool verificarReservada(){
+
+  
+
+} // LLave de cierre en verificarReservada
+//---------------------------------------------------------------------------
+
+/** \fn  verificarNumero 
+ * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
+ * Una vez tomado el string generara tokens para pasar a una fase de validacion
+ * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \param una cadena de caracteres
+ * \return retorna un vector con tokens aceptados y propios de a gramatica
+*/
+ bool verificarNumero(){
+
+
+
+
+ }  // LLave de cierre en esNumer0
+//---------------------------------------------------------------------------
+/** \fn  verficarIdentificador
+ * \brief Esta funcion recibe un string, este string es la entrada del usuario, ya sea escrita directamente o desde un archivo-
+ * Una vez tomado el string generara tokens para pasar a una fase de validacion
+ * donde el validador tiene como objetivo validar cada uno de los tokens aceptados
+ * \param una cadena de caracteres
+ * \return retorna un vector con tokens aceptados y propios de a gramatica
+*/
+ bool verificarIdentificador(){
+
+
+ }// Llave de cierre en esIdentificador
+
+//---------------------------------------------------------------------------
+

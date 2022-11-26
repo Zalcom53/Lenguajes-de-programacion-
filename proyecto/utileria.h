@@ -163,7 +163,7 @@ ifstream archivo("codigoletrec.txt");
 
 while(getline(archivo, entradaLinea)){
 
-entradaS = entradaS + entradaLinea + "\n";
+entradaS = entradaS + entradaLinea + "\n";  //entrada += entradalinea +"\n"; 
   } // Llave de cierre en while 
 
    } // Llave de cierre en while 

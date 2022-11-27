@@ -33,7 +33,7 @@ void imprimirTokens(vector<string> tokens);
 void analizador_lexico(string entradaS);
 void generarTokens(string entradaS);
 
-void validarTokens(string entradaS);
+void validarTokens(entradaS);
 
 
 /* vector: tokens

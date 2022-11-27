@@ -101,13 +101,13 @@ if (estado == true){
 estado = regex_match(tokens[i], equals);
 if(estado == true){
   cout << "equals encontrado!" << endl;
+}else{
+  cout << "Error: codigo fuente erroneo!" << endl;
 }
+
  }
-
- cout << "Error: codigo fuente incorrecto!" << endl;
-}
-
 system("pause");
 
 return 0;
+}
 }

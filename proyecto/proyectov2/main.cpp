@@ -22,12 +22,13 @@ using namespace std;
 
 int main(){
 string entradaS;
+bool estado;
 void validarToken(const string entradaS);
 vector<string> tokens;
-vector<int> tokensNumber;
-const regex identifier("[a-zA-Z]+");
+vector<string> tokensSintactico;
+const regex identifier("[a-zA-Z0-9]+");
 const regex number("(\\+|-)?[[:digit:]]+");
-const regex reservadas("zero|if|then|else|let|in|proc|letrec");
+const regex reservadas("(?:zero|if|then|else|let|in|proc|letrec)");
 const regex a_par("[(]");
 const regex c_par("[)]");
 const regex menos("[-]");
@@ -48,41 +49,43 @@ while(getline(check1, intermediate, ' ')){
   } // Llave de cierre em while
 //Imprimiendo los tokens
   for(int i = 0; i < tokens.size(); i++){
-        cout << tokens[i] << '\n';
+       // cout << tokens[i] << '\n';
 } // Llave de cierre en for
 
 cout << "\n" << endl;
 // En este proceso vemos que tip corresponde los tokens
-bool estado = false;
-while(true){
+
  for (int i = 0; i <= tokens.size(); i++) {
-  char aux;
-  string aux;
 
 //verificamos para number
 estado = regex_match(tokens[i], number);
 if (estado == true) {
   cout << "token de tipo numero encontrado!" << endl;
-  tokensNumber[i] = stoi(tokens[i]);
-  cout << tokensNumber[i];
+  //tokensNumber[i] = stoi(tokens[i]);
+tokensSintactico[i] = tokens[i];
 }
 
+tokensSintactico[i] = tokens[i];
 //verificamos para menos
 estado = regex_match(tokens[i], menos);
 if (estado == true){
   cout << "operador menos encontrado!" << endl;
 }
 
+
 //verificamos para parentesis abierto
 estado = regex_match(tokens[i], a_par);
 if (estado == true){
   cout << "Parentesis abierto encontrado!" << endl;
 }
+
+
 //verificamos para coma
 estado = regex_match(tokens[i], coma);
 if (estado == true){
   cout << "coma encontrada!" << endl;
 }
+
 
 //verificamos para parentesis cerrado
 estado = regex_match(tokens[i], c_par);
@@ -90,26 +93,38 @@ if (estado == true){
   cout << "Parentesis cerrado encontrado!" << endl;
 }
 
-estado = regex_match(tokens[i], identifier);
-if (estado == true){
-  cout << "Identificador encontrado!" << endl;
-}
+
+
 
 //verificamos para palabras reservadas
 estado = regex_match(tokens[i], reservadas);
 if (estado == true){
   cout << "Palabras reservadas encontradas!" << endl;
 }
+
+estado = regex_match(tokens[i], identifier);
+if (estado == true){
+  cout << "Identificador encontrado!" << endl;
+}
+
+
+
 estado = regex_match(tokens[i], equals);
 if(estado == true){
   cout << "equals encontrado!" << endl;
-}else{
-  cout << "Error: codigo fuente erroneo!" << endl;
 }
 
+
  }
+ if(estado == false){
+  cout << "Error: sintaxis mal formulada" << endl;
+}
+
+for(int i = 0; i < tokens.size(); i++){
+      cout << tokensSintactico[i] << '\n';
+} // Llave de cierre en for
 system("pause");
 
 return 0;
-}
+
 }

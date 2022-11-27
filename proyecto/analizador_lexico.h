@@ -21,6 +21,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <regex>
 
 
 using namespace std;
@@ -29,12 +30,11 @@ using namespace std;
 
 
 void imprimirTokens(vector<string> tokens);
-tokens_group validarTokens();
 void analizador_lexico(string entradaS);
 void generarTokens(string entradaS);
-bool verficarIdentificador();
-bool verificarNumero();
-bool verificarReservada();
+
+void validarTokens(string entradaS);
+
 
 /* vector: tokens
 * El vector tokens contiene cada uno de los elementos de el codigo leido por el sistema, este vector 
@@ -42,36 +42,15 @@ bool verificarReservada();
 */
 vector<string> tokens;
 
-char tokenSimbolos[MAX];
-char auxWord[MAX];	//Una variable auxiliar para guardar dos veces la palabra(token) que se vaya formando
-string tokenNumeros[MAX];
-string tokenIdentificadores[MAX];
-string tokenReservadas[MAX];
-string tokensNoValidos[MAX];
-bool esNumero=true;
-bool esIdentificador = true;
-
-
-//Variables auxiliares para guardar en Tokens
-int auxTR=0;
-int auxTI=0;
-int auxTN=0;
-int auxTNV=0;
-
-
-
-/* struct: tokens
-* Esta estructura corresponde a los
-*/
-struct tokens_group{
-
-
-};
 
 // palabras reservadas
 char const *palabrasReservadas[MAX] = {"zero?", "if", "then", "else", "let", "in", "proc", "letrec"};
-
-
+const regex NUMBER("[0-9]{4}"); // Expresion regular para identificar tokens 
+const regex IDENTIFIER("[a-zA-Z]{25}");
+//const regex MENOS("-");
+//const regex O_PAR("(");
+//const regex C_PAR(")");
+//const regex COMA(",");
 
 /** \fn void analizadr lexico 
  * \brief Esta funcion se encaraga de listar las funciones disponibles
@@ -90,39 +69,11 @@ cout << "\n" << endl;
 generarTokens(entradaS);
 imprimirTokens(tokens);
 
-
-validarTokens(tokens);
+validarTokens(entradaS);
 
 system("pause");
 
 }// Llave de cierre en la funcion analizador_lexico
-
-//---------------------------------------------------------------------------
-
-/** \fn  validarTokens
- * \brief Esta funcion tiene como objetivo validar los tokens generados, 
- * es decir comprobar que cada uno de los elementos en el vector contengan 
- * tokens aceptados por la gramatica 
- * \param una un vector
- * \return un struct que contiene los vectores con cada uno de los elementos validos
-*/
-tokens_group validarTokens(){
-
-cout << "Validando tokens, espere un momento...\n" << endl;
-
-//Comparamos cada uno de los elemntos que estan en el vector para aseguranos que los elementos que contenga sean validos en la gramatica
-
-//Comprobamos cada uno de los componentes para ver a que tipo de tokens corresponde
-verficarIdentificador();
-verificarNumero();
-verificarReservada();
-
-
-return tokens_group;
-
-
- } // Llave de cierre en validar token 
-
 
 //---------------------------------------------------------------------------
 
@@ -160,146 +111,33 @@ return tokens_group;
     while (iss >> s) {
       tokens.push_back(s);
     }
-    validarTokens();
+    //validarTokens();
 
  } // Llave de cierre en la funcion generar tokens
 //---------------------------------------------------------------------------
-
-
-/** \fn  verificarReservada 
- * \brief Esta funcion detecta si el elemento que se esta escaneando corresponde a
- * a una palabra reservada
- * \param una cadena de caracteres 
- * \return retorna un elemento al vector palabra reservada
+/** \fn  validarTokens
+ * \brief Esta funcion tiene como objetivo validar los tokens generados, 
+ * es decir comprobar que cada uno de los elementos en el vector contengan 
+ * tokens aceptados por la gramatica 
+ * \param una un vector
+ * \return un struct que contiene los vectores con cada uno de los elementos validos
 */
- bool verificarReservada(){
-	int comparar;
-   bool esReservada=false;
-   string str(palabra);
-	for(int i=0; i<MAX_RES; i++)
-   {
-   	comparar = strcmp(PalabrasReservadas[i],palabra);
-      if(comparar == 0)
-      {
-         esReservada = true;
-         break;
-      }
-   }
-   return esReservada;
+
+  //---------------------------------------------------------------------------
+void validarTokens(string entradaS){
+
+bool estado;
+for(int i = 0; i <= tokens.size(); i++){
+
+  estado = regex_match(tokens[i], IDENTIFIER);
+  if(estado == true){
+
+    cout << "Token encontrado: ";
+    cout << tokens[i] << endl;
+  }else{
+    cout << "no esta detectando el el identificador" << endl;
+  } 
+  } // Llave de cierre en for 
 
 
-} // LLave de cierre en verificarReservada
-//---------------------------------------------------------------------------
-
-/** \fn  verificarNumero 
- * \brief Esta funcion detecta si el elemento que se esta escanenado corresponde
- * a un numero
- * \param una cadena de caracteres
- * \return retorna un elemtno al vector numero
-*/
- bool verificarNumero(){
-
-
-
-
- }  // LLave de cierre en esNumer0
-//---------------------------------------------------------------------------
-/** \fn  verficarIdentificador
- * \brief Esta funcion detecta si el elemento que se esta escaneando corresponde
- * a un identificador y se almacena en en un vector de tipo identificador
- * \param una cadena de caracteres
- * \return retorna un elemento al vector identificador
-*/
- bool verificarIdentificador(){
-string auxPalabra = palabra;
-   esIdentificador = false;
-   short estado = 0;
-   char *p = palabra;
-   while(*p != '\0')
-   {
-   	switch(estado)
-      {
-      	case 0:
-         	if((isalpha(*p)) || (*p=='_')){
-            	estado = 1;
-               esIdentificador = true;
-            }
-            else{
-            	estado = 2;
-               esIdentificador = false;
-            }
-            p++;
-         break;
-         case 1:
-         	if((isalpha(*p)) || (isdigit(*p)) || (*p=='_')){
-            	estado = 1;
-               esIdentificador = true;
-            }
-            else{
-            	estado = 2;
-               esIdentificador = false;
-            }
-            p++;
-         break;
-         case 2:
-				//No es un identificador
-            esIdentificador = false;
-            *p = '\0';
-         break;
-      }
-   }
-   return esIdentificador;
-
-
-	string auxPalabra = palabra;
-   esNumero = false;
-	short estado = 0,cont=0;
-   char *p = palabra;
-	while(*p!='\0')
-   {
-   	switch(estado)
-      {
-      	case 0:
-            if(isdigit(*p)){
-					estado = 0;
-               esNumero = true;
-               cont++;
-            }
-            else if( ((*p == '.') && (cont==0)) || (isalpha(*p))){
-					estado = 2;
-               esNumero=false;
-            }else if(*p=='.'){
-					estado = 1;
-            	esNumero = false;
-            }
-         	p++;
-         break;
-         case 1:
-            if(isdigit(*p)){
-            	estado = 1;
-               esNumero = true;
-            }else
-            {
-            	estado = 2;
-               esNumero = false;
-            }
-         	p++;
-         break;
-         case 2:
-				esNumero = false;
-         	*p = '\0';
-         break;
-      }
-   }
-   if(esNumero == false){
-      if(auxPalabra != ""){
-   	   tokensNoValidos[auxTNV] = auxPalabra;
-	      auxTNV++;
-      }
-   }
- 	return esNumero;
-
- }// Llave de cierre en esIdentificador
-
-//---------------------------------------------------------------------------
-
+}

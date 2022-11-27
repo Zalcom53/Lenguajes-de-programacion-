@@ -56,6 +56,8 @@ cout << "\n" << endl;
 bool estado = false;
 while(true){
  for (int i = 0; i <= tokens.size(); i++) {
+  char aux;
+  string aux;
 
 //verificamos para number
 estado = regex_match(tokens[i], number);

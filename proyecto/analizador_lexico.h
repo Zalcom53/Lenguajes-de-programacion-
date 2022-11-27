@@ -65,9 +65,6 @@ int auxTNV=0;
 */
 struct tokens_group{
 
-vector<int> number;
-vector<string> id;
-vector<string> reserved_keyword;
 
 };
 
@@ -93,6 +90,8 @@ cout << "\n" << endl;
 generarTokens(entradaS);
 imprimirTokens(tokens);
 
+
+validarTokens(tokens);
 
 system("pause");
 
@@ -174,7 +173,19 @@ return tokens_group;
  * \return retorna un elemento al vector palabra reservada
 */
  bool verificarReservada(){
-
+	int comparar;
+   bool esReservada=false;
+   string str(palabra);
+	for(int i=0; i<MAX_RES; i++)
+   {
+   	comparar = strcmp(PalabrasReservadas[i],palabra);
+      if(comparar == 0)
+      {
+         esReservada = true;
+         break;
+      }
+   }
+   return esReservada;
 
 
 } // LLave de cierre en verificarReservada
@@ -200,8 +211,93 @@ return tokens_group;
  * \return retorna un elemento al vector identificador
 */
  bool verificarIdentificador(){
+string auxPalabra = palabra;
+   esIdentificador = false;
+   short estado = 0;
+   char *p = palabra;
+   while(*p != '\0')
+   {
+   	switch(estado)
+      {
+      	case 0:
+         	if((isalpha(*p)) || (*p=='_')){
+            	estado = 1;
+               esIdentificador = true;
+            }
+            else{
+            	estado = 2;
+               esIdentificador = false;
+            }
+            p++;
+         break;
+         case 1:
+         	if((isalpha(*p)) || (isdigit(*p)) || (*p=='_')){
+            	estado = 1;
+               esIdentificador = true;
+            }
+            else{
+            	estado = 2;
+               esIdentificador = false;
+            }
+            p++;
+         break;
+         case 2:
+				//No es un identificador
+            esIdentificador = false;
+            *p = '\0';
+         break;
+      }
+   }
+   return esIdentificador;
 
 
+	string auxPalabra = palabra;
+   esNumero = false;
+	short estado = 0,cont=0;
+   char *p = palabra;
+	while(*p!='\0')
+   {
+   	switch(estado)
+      {
+      	case 0:
+            if(isdigit(*p)){
+					estado = 0;
+               esNumero = true;
+               cont++;
+            }
+            else if( ((*p == '.') && (cont==0)) || (isalpha(*p))){
+					estado = 2;
+               esNumero=false;
+            }else if(*p=='.'){
+					estado = 1;
+            	esNumero = false;
+            }
+         	p++;
+         break;
+         case 1:
+            if(isdigit(*p)){
+            	estado = 1;
+               esNumero = true;
+            }else
+            {
+            	estado = 2;
+               esNumero = false;
+            }
+         	p++;
+         break;
+         case 2:
+				esNumero = false;
+         	*p = '\0';
+         break;
+      }
+   }
+   if(esNumero == false){
+      if(auxPalabra != ""){
+   	   tokensNoValidos[auxTNV] = auxPalabra;
+	      auxTNV++;
+      }
+   }
+ 	return esNumero;
 
  }// Llave de cierre en esIdentificador
 

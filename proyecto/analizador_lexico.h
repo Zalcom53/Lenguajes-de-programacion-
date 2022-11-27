@@ -2,6 +2,7 @@
   Nombre: analizador_lexico.h
   Autor: Daniel Antonio Quihuis Hernandez
   Fecha: Noviemrbe del 2022
+
   Descripcion: Este archivo contiene el codigo del analziador lexico.
 *
 * Este codigo toma un flujo lineal de caracteres, analiza la entrada de caracteres
@@ -24,7 +25,7 @@
 
 using namespace std;
 
-#define LENGTH_RES 26
+#define MAX 26
 
 
 void imprimirTokens(vector<string> tokens);
@@ -41,6 +42,23 @@ bool verificarReservada();
 */
 vector<string> tokens;
 
+char tokenSimbolos[MAX];
+char auxWord[MAX];	//Una variable auxiliar para guardar dos veces la palabra(token) que se vaya formando
+string tokenNumeros[MAX];
+string tokenIdentificadores[MAX];
+string tokenReservadas[MAX];
+string tokensNoValidos[MAX];
+bool esNumero=true;
+bool esIdentificador = true;
+
+
+//Variables auxiliares para guardar en Tokens
+int auxTR=0;
+int auxTI=0;
+int auxTN=0;
+int auxTNV=0;
+
+
 
 /* struct: tokens
 * Esta estructura corresponde a los
@@ -54,7 +72,7 @@ vector<string> reserved_keyword;
 };
 
 // palabras reservadas
-char const *palabrasReservadas[LENGTH_RES] = {"zero?", "if", "then", "else", "let", "in", "proc", "letrec"};
+char const *palabrasReservadas[MAX] = {"zero?", "if", "then", "else", "let", "in", "proc", "letrec"};
 
 
 

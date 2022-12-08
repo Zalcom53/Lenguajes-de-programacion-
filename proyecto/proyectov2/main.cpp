@@ -28,7 +28,7 @@ vector<string> tokens;
 vector<string> tokensSintactico;
 const regex identifier("[a-zA-Z0-9]+");
 const regex number("(\\+|-)?[[:digit:]]+");
-const regex reservadas("(?:zero|if|then|else|let|in|proc|letrec)");
+const regex reservadas("(\\zero|if|then|else|let|in|proc|letrec)");
 const regex a_par("[(]");
 const regex c_par("[)]");
 const regex menos("[-]");
@@ -62,37 +62,37 @@ estado = regex_match(tokens[i], number);
 if (estado == true) {
   cout << "token de tipo numero encontrado!" << endl;
   //tokensNumber[i] = stoi(tokens[i]);
-tokensSintactico[i] = tokens[i];
-}
 
-tokensSintactico[i] = tokens[i];
+}
+break;
+
 //verificamos para menos
 estado = regex_match(tokens[i], menos);
 if (estado == true){
   cout << "operador menos encontrado!" << endl;
 }
-
+break;
 
 //verificamos para parentesis abierto
 estado = regex_match(tokens[i], a_par);
 if (estado == true){
   cout << "Parentesis abierto encontrado!" << endl;
 }
-
+break;
 
 //verificamos para coma
 estado = regex_match(tokens[i], coma);
 if (estado == true){
   cout << "coma encontrada!" << endl;
 }
-
+break;
 
 //verificamos para parentesis cerrado
 estado = regex_match(tokens[i], c_par);
 if (estado == true){
   cout << "Parentesis cerrado encontrado!" << endl;
 }
-
+break;
 
 
 
@@ -101,28 +101,25 @@ estado = regex_match(tokens[i], reservadas);
 if (estado == true){
   cout << "Palabras reservadas encontradas!" << endl;
 }
-
+break;
 estado = regex_match(tokens[i], identifier);
 if (estado == true){
   cout << "Identificador encontrado!" << endl;
 }
-
+break;
 
 
 estado = regex_match(tokens[i], equals);
 if(estado == true){
   cout << "equals encontrado!" << endl;
 }
-
+break;
 
  }
  if(estado == false){
   cout << "Error: sintaxis mal formulada" << endl;
 }
 
-for(int i = 0; i < tokens.size(); i++){
-      cout << tokensSintactico[i] << '\n';
-} // Llave de cierre en for
 system("pause");
 
 return 0;
